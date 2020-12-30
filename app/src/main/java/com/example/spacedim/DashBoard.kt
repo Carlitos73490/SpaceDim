@@ -4,29 +4,21 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.example.spacedim.databinding.ActivityDashBoardBinding
 import com.example.spacedim.databinding.ActivityLoginBinding
 
-class Login : AppCompatActivity() {
-
-
+class DashBoard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_login)
-        val binding : ActivityLoginBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_login)
+        setContentView(R.layout.activity_dash_board)
+        val binding : ActivityDashBoardBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_dash_board)
 
-        binding.buttonConnection.setOnClickListener {
+        binding.buttonEndGame.setOnClickListener {
             //Intent pour ouvrir l'activité suivante
-            val intent = Intent(this, WaitingRoom::class.java)
+            val intent = Intent(this, End::class.java)
             //Lancement de l'intent (changement d'écran)
             startActivity(intent)
         }
-
-
     }
-
-
-
-
 }
