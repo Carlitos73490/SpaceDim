@@ -35,7 +35,7 @@
             android:orientation="vertical"
             android:layout_margin="40px"
             android:padding="20px"
-            android:background="@drawable/backgroundBorder"
+            android:background="@drawable/background_border"
             app:layout_constraintTop_toBottomOf="@id/WaitPlayer"
             app:layout_constraintBottom_toTopOf="@id/buttonStartGame"
             app:layout_constraintEnd_toEndOf="parent"

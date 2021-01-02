@@ -18,10 +18,10 @@
             android:id="@+id/buttonEndGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Terminer"
-            tools:layout_editor_absoluteX="151dp"
-            tools:layout_editor_absoluteY="2dp"
-            tools:ignore="MissingConstraints" />
+            android:text="page suivante"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="130dp"
+            tools:layout_editor_absoluteY="0dp" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -67,10 +67,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:background="@color/yellow"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/switch_border"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     app:cornerRadius="10dp">
 
                     <TextView
@@ -79,14 +80,14 @@
                         android:layout_height="wrap_content"
                         android:text="@string/button1"
                         android:textColor="@color/black"
-                        android:textSize="15dip"/>
+                        android:textSize="15dip"
+                        android:textStyle="bold"/>
 
                     <Switch
                         android:id="@+id/simpleSwitch1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="false"
-                        app:cornerRadius="10dp" />
+                        android:checked="false" />
 
                 </LinearLayout>
 
@@ -110,11 +111,32 @@
                     style="@style/button_yellow"
                     app:cornerRadius="10dp"/>
 
-                <Button
-                    android:id="@+id/button4"
-                    android:text="@string/button4"
-                    style="@style/button_yellow"
-                    app:cornerRadius="10dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/switch_border"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:cornerRadius="10dp">
+
+                    <TextView
+                        android:id="@+id/switch2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/button4"
+                        android:textColor="@color/black"
+                        android:textSize="15dip"
+                        android:textStyle="bold"/>
+
+                    <Switch
+                        android:id="@+id/simpleSwitch2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
