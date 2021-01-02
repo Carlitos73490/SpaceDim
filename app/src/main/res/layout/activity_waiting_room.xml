@@ -10,25 +10,109 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".WaitingRoom">
+        tools:context=".WaitingRoom"
+        android:background="@color/black">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/WaitPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="75px"
+            android:layout_marginBottom="20px"
+            android:layout_marginTop="40px"
             android:text="Salle d'attente"
+            android:textColor="#FFE436"
+            app:layout_constraintBottom_toTopOf="@id/LayoutWaitroom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <LinearLayout
+            android:id="@+id/LayoutWaitroom"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:orientation="vertical"
+            android:layout_margin="40px"
+            android:padding="20px"
+            android:background="@drawable/backgroundBorder"
+            app:layout_constraintTop_toBottomOf="@id/WaitPlayer"
+            app:layout_constraintBottom_toTopOf="@id/buttonStartGame"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+        <LinearLayout
+            android:id="@+id/LayoutWaitroomP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10px"
+            android:padding="10px"
+            app:layout_constraintTop_toBottomOf="@id/WaitPlayer"
+            app:layout_constraintBottom_toTopOf="@id/buttonStartGame"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <ImageView
+                android:id="@+id/imageViewP"
+                android:layout_width="10dp"
+                android:layout_height="110dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/user_avatar_2" />
+
+            <TextView
+                android:id="@+id/textView3P"
+                android:layout_width="wrap_content"
+                android:layout_height="108dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:gravity="center_vertical"
+                android:textSize="55px"
+                android:textStyle="bold"
+                android:textColor="#FFE436" />
+        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/LayoutWaitroomPP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10px"
+                android:padding="10px"
+                app:layout_constraintTop_toBottomOf="@id/WaitPlayer"
+                app:layout_constraintBottom_toTopOf="@id/buttonStartGame"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="10dp"
+                android:layout_height="110dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/user_avatar_2" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="108dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:gravity="center_vertical"
+                android:textSize="55px"
+                android:textStyle="bold"
+                android:textColor="#FFE436" />
+        </LinearLayout>
+
+    </LinearLayout>
 
         <Button
             android:id="@+id/buttonStartGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lancer Partie"
+            android:text="Mise en orbite"
+            android:layout_marginBottom="40px"
+            android:textColor="#000"
+            android:backgroundTint="#FFE436"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:cornerRadius="10dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
