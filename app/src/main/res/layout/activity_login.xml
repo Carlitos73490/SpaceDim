@@ -13,76 +13,63 @@
         android:background="#171616"
         tools:context=".Login">
 
-
-        <TextView
-            android:id="@+id/textViewLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:textColor="#FFFFFF"
+        <ImageView
+            android:id="@+id/titleSpaceDim"
+            android:layout_width="325dp"
+            android:layout_height="191dp"
+            app:srcCompat="@drawable/spacedim"
             app:layout_constraintBottom_toTopOf="@id/editTextLogin"
-            app:layout_constraintStart_toStartOf="@+id/editTextLogin" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
             android:id="@+id/editTextLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:layout_width="240dp"
+            android:layout_height="59dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/backgroundBorder"
             android:ems="10"
             android:inputType="textPersonName"
-
-            app:layout_constraintBottom_toTopOf="@id/textViewPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
-
-        <TextView
-            android:id="@+id/textViewPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mot de Passe"
-            android:textColor="#FFFFFF"
+            android:paddingLeft="20px"
+            android:text="Username"
+            android:textColor="#8E8E8E"
             app:layout_constraintBottom_toTopOf="@id/editTextPassword"
-            app:layout_constraintStart_toStartOf="@id/editTextPassword" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/editTextPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:layout_width="240dp"
+            android:layout_height="59dp"
+            android:background="@drawable/backgroundBorder"
             android:ems="10"
             android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@id/buttonConnection"
+            android:paddingLeft="20px"
+            android:text="Password"
+            android:textColor="#8E8E8E"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="413dp" />
 
         <Button
             android:id="@+id/buttonConnection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FFEB3B"
-            android:text="Connection"
-            android:textColor="#FFFFFF"
+            android:layout_width="240dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="10px"
+            android:backgroundTint="#FFE436"
+            android:text="Launch"
+            android:textColor="#000"
+            app:cornerRadius="10dp"
             app:iconTint="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-           />
-
-        <TextView
-            android:id="@+id/titleSpaceDim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:rotation="-12"
-            android:rotationX="25"
-            android:text="SpaceDim"
-            android:textColor="#FFEB3B"
-            android:textSize="72sp"
-            app:layout_constraintBottom_toTopOf="@id/textViewLogin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintVertical_bias="0.718" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
