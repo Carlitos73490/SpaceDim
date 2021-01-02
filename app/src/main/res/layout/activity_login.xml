@@ -17,11 +17,12 @@
             android:id="@+id/titleSpaceDim"
             android:layout_width="325dp"
             android:layout_height="191dp"
-            app:srcCompat="@drawable/spacedim"
-            app:layout_constraintBottom_toTopOf="@id/editTextLogin"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.13"
+            app:srcCompat="@drawable/spacedim" />
 
         <EditText
             android:id="@+id/editTextLogin"
@@ -49,10 +50,10 @@
             android:paddingLeft="20px"
             android:text="Password"
             android:textColor="#8E8E8E"
+            app:layout_constraintBottom_toTopOf="@+id/buttonConnection"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="413dp" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/buttonConnection"
