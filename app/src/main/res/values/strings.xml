@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SpaceDim</string>
+    <string name="button1">Rayon orbital</string>
+    <string name="button2">Dégazer</string>
+    <string name="button3">Réparer</string>
+    <string name="button4">Turbo propulseur</string>
 </resources>

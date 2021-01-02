@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="button_yellow">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15dip</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:backgroundTint">@color/yellow</item>
+    </style>
+
+    <style name="button_yellow_switch">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15dip</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/yellow</item>
+    </style>
+</resources>
+
