@@ -17,60 +17,59 @@
             android:id="@+id/titleSpaceDim"
             android:layout_width="325dp"
             android:layout_height="191dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/editTextLogin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.13"
+            app:layout_constraintVertical_bias="0.101"
             app:srcCompat="@drawable/spacedim" />
 
         <EditText
             android:id="@+id/editTextLogin"
             android:layout_width="240dp"
             android:layout_height="59dp"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/background_border"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingLeft="20px"
-            android:text="Username"
+            android:text=""
+            android:hint="userName"
+            android:textColorHint="#FFE436"
             android:textColor="#8E8E8E"
-            app:layout_constraintBottom_toTopOf="@id/editTextPassword"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="240dp"
-            android:layout_height="59dp"
-            android:background="@drawable/background_border"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:paddingLeft="20px"
-            android:text="Password"
-            android:textColor="#8E8E8E"
-            app:layout_constraintBottom_toTopOf="@+id/buttonConnection"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="125dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10px"
+            android:backgroundTint="#FFE436"
+            android:text="Register"
+            android:textColor="#000"
+            app:cornerRadius="10dp"
+            app:iconTint="#FFFFFF"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/titleSpaceDim"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLogin"
+            app:layout_constraintVertical_bias="0.496" />
 
         <Button
             android:id="@+id/buttonConnection"
-            android:layout_width="240dp"
-            android:layout_height="59dp"
-            android:layout_marginTop="10px"
+            android:layout_width="125dp"
+            android:layout_height="50dp"
             android:backgroundTint="#FFE436"
             android:text="Launch"
             android:textColor="#000"
             app:cornerRadius="10dp"
             app:iconTint="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.718" />
+            app:layout_constraintStart_toStartOf="@+id/titleSpaceDim"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLogin" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
