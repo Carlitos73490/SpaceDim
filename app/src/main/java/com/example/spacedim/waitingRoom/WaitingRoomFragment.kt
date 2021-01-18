@@ -8,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
-import com.example.spacedim.databinding.ActivityWaitingRoomBinding
-import com.example.spacedim.databinding.FragmentLoginBinding
 import com.example.spacedim.databinding.FragmentWaitingRoomBinding
 import okhttp3.*
 
@@ -51,7 +49,7 @@ class WaitingRoomFragment : Fragment() {
     fun GoDashBoard() {
         requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
             NavHostFragment.findNavController(this)
-                .navigate(R.id.action_waitingRoomFragment_to_dashBoardFragment)
+                .navigate(R.id.action_loginFragment_to_waitingRoomFragment)
         }
     }
 

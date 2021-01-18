@@ -14,20 +14,8 @@
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ends.End" />
-        <activity android:name=".ends.Win" />
-        <activity android:name=".dashboard.DashBoard" />
-        <activity android:name=".waitingRoom.WaitingRoom" />
-        <activity android:name=".login.Login">
-    <!--        <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
     </application>
 
