@@ -29,6 +29,7 @@ class Login : AppCompatActivity() {
 
         binding.buttonConnection.setOnClickListener {
             val client = OkHttpClient()
+
             val request = Request.Builder()
                 .url("https://spacedim.async-agency.com/api/user/find/" + binding.editTextLogin.text)
                 .build()
@@ -44,14 +45,10 @@ class Login : AppCompatActivity() {
                             println("$name: $value")
                         }
                         println(response.body!!.string())
+                        switchPage()
                     }
                 }
             })
-
-            //Intent pour ouvrir l'activité suivante
-            val intent = Intent(this, WaitingRoom::class.java)
-            //Lancement de l'intent (changement d'écran)
-            startActivity(intent)
         }
 
         binding.buttonRegister.setOnClickListener {
@@ -83,19 +80,19 @@ class Login : AppCompatActivity() {
                             println("$name: $value")
                         }
                         println(response.body!!.string())
+                        switchPage()
                     }
                 }
             })
-            //Intent pour ouvrir l'activité suivante
-            val intent = Intent(this, WaitingRoom::class.java)
-            //Lancement de l'intent (changement d'écran)
-            startActivity(intent)
         }
 
 
     }
 
-
-
-
+    fun switchPage() {
+        //Intent pour ouvrir l'activité suivante
+        val intent = Intent(this, WaitingRoom::class.java)
+        //Lancement de l'intent (changement d'écran)
+        startActivity(intent)
+    }
 }
