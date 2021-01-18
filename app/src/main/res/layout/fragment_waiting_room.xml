@@ -1,14 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".WaitingRoomFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="blank fragment waiting room"  />
+        tools:context=".WaitingRoomFragment">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".WaitingRoom"
+            android:background="@color/black">
+
+            <TextView
+                android:id="@+id/WaitPlayer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="75px"
+                android:layout_marginBottom="20px"
+                android:layout_marginTop="40px"
+                android:text="Salle d'attente"
+                android:textColor="#FFE436"
+                app:layout_constraintBottom_toTopOf="@id/LayoutWaitroom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/LayoutWaitroom"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:orientation="vertical"
+                android:layout_margin="60px"
+                android:padding="20px"
+                android:background="@drawable/background_border"
+                app:layout_constraintTop_toBottomOf="@id/WaitPlayer"
+                app:layout_constraintBottom_toTopOf="@id/buttonStartGame"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/LayoutWaitroomP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10px"
+                    android:padding="10px"
+                    app:layout_constraintTop_toBottomOf="@id/WaitPlayer"
+                    app:layout_constraintBottom_toTopOf="@id/buttonStartGame"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageViewP"
+                        android:layout_width="10dp"
+                        android:layout_height="110dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/user_avatar_2" />
+
+                    <TextView
+                        android:id="@+id/textView3P"
+                        android:layout_width="wrap_content"
+                        android:layout_height="108dp"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:gravity="center_vertical"
+                        android:textSize="55px"
+                        android:textStyle="bold"
+                        android:textColor="#FFE436" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/LayoutWaitroomPP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10px"
+                    android:padding="10px"
+                    app:layout_constraintTop_toBottomOf="@id/WaitPlayer"
+                    app:layout_constraintBottom_toTopOf="@id/buttonStartGame"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="10dp"
+                        android:layout_height="110dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/user_avatar_2" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="108dp"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:gravity="center_vertical"
+                        android:textSize="55px"
+                        android:textStyle="bold"
+                        android:textColor="#FFE436" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonStartGame"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#FFE436"
+                android:text="Mise en orbite"
+                android:textColor="#000"
+                app:cornerRadius="10dp"
+                android:textSize="25dip"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/LayoutWaitroom"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/LayoutWaitroom" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

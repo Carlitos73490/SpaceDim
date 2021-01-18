@@ -9,7 +9,11 @@
         android:id="@+id/waitingRoomFragment"
         android:name="com.example.spacedim.WaitingRoomFragment"
         android:label="fragment_waiting_room"
-        tools:layout="@layout/fragment_waiting_room" />
+        tools:layout="@layout/fragment_waiting_room" >
+        <action
+            android:id="@+id/action_waitingRoomFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.spacedim.MainFragment"
@@ -33,4 +37,26 @@
         android:name="com.example.spacedim.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/endFragment"
+        android:name="com.example.spacedim.EndFragment"
+        android:label="fragment_end"
+        tools:layout="@layout/fragment_end" />
+    <fragment
+        android:id="@+id/winFragment"
+        android:name="com.example.spacedim.winFragment"
+        android:label="fragment_win"
+        tools:layout="@layout/fragment_win" />
+    <fragment
+        android:id="@+id/dashBoardFragment"
+        android:name="com.example.spacedim.dashBoardFragment"
+        android:label="fragment_dash_board"
+        tools:layout="@layout/fragment_dash_board" >
+        <action
+            android:id="@+id/action_dashBoardFragment_to_endFragment"
+            app:destination="@id/endFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_winFragment"
+            app:destination="@id/winFragment" />
+    </fragment>
 </navigation>
