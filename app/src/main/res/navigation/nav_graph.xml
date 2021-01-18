@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/waitingRoomFragment"
-        android:name="com.example.spacedim.WaitingRoomFragment"
+        android:name="com.example.spacedim.waitingRoom.WaitingRoomFragment"
         android:label="fragment_waiting_room"
         tools:layout="@layout/fragment_waiting_room" />
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.spacedim.MainFragment"
+        android:name="com.example.spacedim.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.spacedim.LoginFragment"
+        android:name="com.example.spacedim.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.example.spacedim.MainActivity"
+        android:name="com.example.spacedim.main.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
 </navigation>

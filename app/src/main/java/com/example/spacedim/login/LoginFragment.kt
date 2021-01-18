@@ -1,12 +1,14 @@
-package com.example.spacedim
+package com.example.spacedim.login
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.example.spacedim.databinding.ActivityLoginBinding
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
+import com.example.spacedim.R
+import com.example.spacedim.databinding.FragmentLoginBinding
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
 import okhttp3.*
@@ -17,23 +19,33 @@ import org.json.JSONException
 import org.json.JSONObject
 
 
-class Login : AppCompatActivity() {
+/**
+ * A simple [Fragment] subclass.
+ * Use the [LoginFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class LoginFragment : Fragment() {
+    private var  fragmentLoginBinding: FragmentLoginBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        // Full screen app
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-        actionBar?.hide()
-        getSupportActionBar()?.hide()
-
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_login)
-        val binding : ActivityLoginBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_login)
+
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        val binding = FragmentLoginBinding.inflate(inflater, container, false)
+        fragmentLoginBinding = binding
 
         binding.buttonConnection.setOnClickListener {
             val client = OkHttpClient()
             val moshi = Moshi.Builder().build()
-            val playerJsonAdapter = moshi.adapter(Player::class.java)
+            val playerJsonAdapter = moshi.adapter(LoginFragment.Player::class.java)
             val request = Request.Builder()
                 .url("https://spacedim.async-agency.com/api/user/find/" + binding.editTextLogin.text)
                 .build()
@@ -49,22 +61,22 @@ class Login : AppCompatActivity() {
                             println(player!!.id)
                             println(player!!.name)
 
-
-                            runOnUiThread {
-                                Toast.makeText(
-                                    applicationContext,
-                                    " " + player!!.id + " " + player!!.name + " Connected",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-
+                            activity!!.runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                            Toast.makeText(
+                                activity,
+                                " " + player!!.id + " " + player!!.name + " Connected",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             }
 
                             GoWaitingRoom()
                         } else{
 
-                            runOnUiThread {
+
+                            activity!!.runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
                                 binding.textViewResponseHttp.text = "Connection failed $response"
                             }
+
                             throw IOException("Unexpected code $response")
                         }
                     }
@@ -85,7 +97,7 @@ class Login : AppCompatActivity() {
 
             val client = OkHttpClient()
             val moshi = Moshi.Builder().build()
-            val playerJsonAdapter = moshi.adapter(Player::class.java)
+            val playerJsonAdapter = moshi.adapter(LoginFragment.Player::class.java)
             val mediaType = "application/json; charset=utf-8".toMediaType()
             val body = jsonObject.toString().toRequestBody(mediaType)
             val request = Request.Builder()
@@ -103,35 +115,31 @@ class Login : AppCompatActivity() {
                             val player = playerJsonAdapter.fromJson(response.body!!.source())
                             println(player!!.id)
                             println(player!!.name)
-
-                            runOnUiThread {
+                            activity!!.runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
                                 binding.textViewResponseHttp.text =
                                     "Player " + player!!.name + " " + player!!.id + " Sucessfuly created, you can now launch"
                             }
+
                         }else{
 
-                            runOnUiThread {
-                                binding.textViewResponseHttp.text =
-                                    "Registration failed $response"
+                            activity!!.runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                                binding.textViewResponseHttp.text = "registration failed $response"
                             }
                             throw IOException("Unexpected code $response")
                         }
                     }
                 }
             })
-
-
         }
-
-
-
+        return binding.root
+        //return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     fun  GoWaitingRoom(){
-        //Intent pour ouvrir l'activité suivante
-        val intent = Intent(this, WaitingRoom::class.java)
-        //Lancement de l'intent (changement d'écran)
-        startActivity(intent)
+        requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
+            NavHostFragment.findNavController(this)
+                .navigate(R.id.action_loginFragment_to_waitingRoomFragment)
+        }
     }
 
     @JsonClass(generateAdapter = true)
