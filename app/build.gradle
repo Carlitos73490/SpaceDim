@@ -36,7 +36,7 @@ android {
         jvmTarget = '1.8'
     }
 }
-
+apply plugin: 'kotlin-kapt'
 dependencies {
 
     implementation "com.squareup.moshi:moshi:1.11.0"
@@ -49,7 +49,12 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //Okhttp
 
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
-    
+
+    // Moshi
+    implementation("com.squareup.moshi:moshi:1.11.0")
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.11.0'
+
 }
