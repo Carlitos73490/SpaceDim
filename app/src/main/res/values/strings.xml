@@ -4,4 +4,6 @@
     <string name="button2">DÉGAZER</string>
     <string name="button3">RÉPARER</string>
     <string name="button4">TURBO PROPULSEUR</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

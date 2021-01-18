@@ -11,15 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SpaceDim">
-        <activity android:name=".End"></activity>
-        <activity android:name=".Win"></activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".End" />
+        <activity android:name=".Win" />
         <activity android:name=".DashBoard" />
         <activity android:name=".WaitingRoom" />
         <activity android:name=".Login">
-            <intent-filter>
+    <!--        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
     </application>
 
