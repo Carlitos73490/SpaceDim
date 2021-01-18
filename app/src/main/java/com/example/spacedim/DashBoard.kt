@@ -27,5 +27,12 @@ class DashBoard : AppCompatActivity() {
             //Lancement de l'intent (changement d'écran)
             startActivity(intent)
         }
+
+        binding.buttonWinGame.setOnClickListener {
+            //Intent pour ouvrir l'activité suivante
+            val int = Intent(this, Win::class.java)
+            //Lancement de l'intent (changement d'écran)
+            startActivity(int)
+        }
     }
 }
