@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpaceDim">
         <activity android:name=".End"></activity>
+        <activity android:name=".Win"></activity>
         <activity android:name=".DashBoard" />
         <activity android:name=".WaitingRoom" />
         <activity android:name=".Login">
