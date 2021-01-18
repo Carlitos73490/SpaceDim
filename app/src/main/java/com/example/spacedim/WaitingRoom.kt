@@ -7,6 +7,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.example.spacedim.databinding.ActivityLoginBinding
 import com.example.spacedim.databinding.ActivityWaitingRoomBinding
+import okhttp3.*
 
 class WaitingRoom : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,9 +18,13 @@ class WaitingRoom : AppCompatActivity() {
         getSupportActionBar()?.hide()
 
         super.onCreate(savedInstanceState)
+
         //setContentView(R.layout.activity_waiting_room)
         val binding : ActivityWaitingRoomBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_waiting_room)
+
+
+        val ws = SocketListener().run()
 
         binding.buttonStartGame.setOnClickListener {
             //Intent pour ouvrir l'activité suivante
@@ -29,4 +34,26 @@ class WaitingRoom : AppCompatActivity() {
         }
     }
 
+}
+
+class SocketListener : WebSocketListener() {
+    fun run() {
+        println("new web socket")
+        val client = OkHttpClient()
+        val request =
+            Request.Builder()
+                .url("ws://spacedim.async-agency.com:8081/ws/join/roomTest/1")
+                .build()
+        val ws = client.newWebSocket(request, this)
+    }
+
+    override fun onOpen(webSocket: WebSocket, response: Response) {
+        println("onOpen")
+        println(response)
+    }
+
+    override fun onMessage(webSocket: WebSocket, response: String) {
+        println("onMessage")
+        println(response)
+    }
 }
