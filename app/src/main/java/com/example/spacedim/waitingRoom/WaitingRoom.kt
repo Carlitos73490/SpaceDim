@@ -1,12 +1,13 @@
-package com.example.spacedim
+package com.example.spacedim.waitingRoom
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import com.example.spacedim.databinding.ActivityLoginBinding
-import com.example.spacedim.databinding.ActivityWaitingRoomBinding
+import com.example.spacedim.dashboard.DashBoard
+import com.example.spacedim.R
+//import com.example.spacedim.databinding.ActivityWaitingRoomBinding
 import okhttp3.*
 
 class WaitingRoom : AppCompatActivity() {
@@ -20,18 +21,20 @@ class WaitingRoom : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         //setContentView(R.layout.activity_waiting_room)
-        val binding : ActivityWaitingRoomBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_waiting_room)
+      /*  val binding : ActivityWaitingRoomBinding =
+            DataBindingUtil.setContentView(this,
+                R.layout.activity_waiting_room
+            )*/
 
 
         val ws = SocketListener().run()
 
-        binding.buttonStartGame.setOnClickListener {
+     /*   binding.buttonStartGame.setOnClickListener {
             //Intent pour ouvrir l'activité suivante
             val intent = Intent(this, DashBoard::class.java)
             //Lancement de l'intent (changement d'écran)
             startActivity(intent)
-        }
+        }*/
     }
 
 }

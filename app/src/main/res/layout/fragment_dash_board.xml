@@ -1,51 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/fullscreenBackgroundColor"
-    android:theme="@style/ThemeOverlay.SpaceDim.FullscreenContainer"
-    tools:context=".dashBoardFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="?attr/fullscreenTextColor"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+    <data>
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
+    </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        tools:context=".dashboard.DashBoard">
 
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="@style/Widget.Theme.SpaceDim.ButtonBar.Fullscreen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+        <!-- TODO: Update blank fragment layout -->
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
+                <data>
 
-        </LinearLayout>
+                </data>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#000000"
+                    android:orientation="vertical"
+                    tools:context=".dashboard.DashBoard">
+
+                    <Button
+                        android:id="@+id/buttonEndGame"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="page suivante"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteX="130dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <Button
+                        android:id="@+id/buttonWinGame"
+                        android:layout_width="130dp"
+                        android:layout_height="49dp"
+                        android:layout_marginStart="55dp"
+                        android:layout_marginTop="163dp"
+                        android:layout_marginEnd="161dp"
+                        android:text="test win"
+                        app:layout_constraintBottom_toTopOf="@+id/actionName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toBottomOf="@+id/buttonEndGame"
+                        tools:ignore="MissingConstraints" />
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="105dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toTopOf="@+id/actionName"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:srcCompat="@drawable/vaisseau"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/actionName"
+                        android:layout_width="match_parent"
+                        android:layout_height="111dp"
+                        android:background="#262626"
+                        android:gravity="center"
+                        android:text="Activer le rayon orbital"
+                        android:textAlignment="center"
+                        android:textColor="@color/yellow"
+                        android:textSize="30sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.40"
+                        tools:layout_editor_absoluteX="0dp" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/actionName">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/switch_border"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:cornerRadius="10dp">
+
+                                <TextView
+                                    android:id="@+id/switch1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/button1"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dip"
+                                    android:textStyle="bold"/>
+
+                                <Switch
+                                    android:id="@+id/simpleSwitch1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="false" />
+
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/button2"
+                                android:text="@string/button2"
+                                style="@style/button_yellow"
+                                app:cornerRadius="10dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_weight="1">
+
+                            <Button
+                                android:id="@+id/button3"
+                                android:text="@string/button3"
+                                style="@style/button_yellow"
+                                app:cornerRadius="10dp"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/switch_border"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:cornerRadius="10dp">
+
+                                <TextView
+                                    android:id="@+id/switch2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/button4"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dip"
+                                    android:textStyle="bold"/>
+
+                                <Switch
+                                    android:id="@+id/simpleSwitch2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="false" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
-
-</FrameLayout>
+</layout>
