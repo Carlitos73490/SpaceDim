@@ -11,12 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.example.spacedim.R
 import com.example.spacedim.api.Event
+import com.example.spacedim.dashboard.DashBoardFragment
 import com.example.spacedim.databinding.FragmentWaitingRoomBinding
 
 class WaitingRoomFragment : Fragment() {
 
     private var fragmentWaitingRoomBinding: FragmentWaitingRoomBinding? = null
-    var list = null
     private lateinit var viewModel: WaitingViewModel
 
     override fun onCreateView(
