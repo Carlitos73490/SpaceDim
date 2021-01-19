@@ -10,9 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.example.spacedim.R
+import com.example.spacedim.api.Event
 import com.example.spacedim.databinding.FragmentWaitingRoomBinding
-import com.example.spaceteamllacdev.Models.Event
-import com.example.spaceteamllacdev.Models.User
 
 class WaitingRoomFragment : Fragment() {
 
@@ -32,33 +31,34 @@ class WaitingRoomFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(WaitingViewModel::class.java)
 
         viewModel.startChat().observe(viewLifecycleOwner, Observer {
-            var list = it as Event.WaitingForPlayer
-            println(list.userList)
-            var lUser = list.userList
 
-            var layout = binding.LayoutWaitroom
+            if(it is Event.WaitingForPlayer) {
+                var list = it as Event.WaitingForPlayer
+                println(list.userList)
+                var lUser = list.userList
 
-            layout.removeAllViews()
-            for(elem in lUser) {
-                val name = TextView(this.context)
-                name.textSize = 20f
-                name.text = elem.name
+                var layout = binding.LayoutWaitroom
 
-                layout.addView(name)
+                layout.removeAllViews()
+                for(elem in lUser) {
+                    val name = TextView(this.context)
+                    name.textSize = 20f
+                    name.text = elem.name
+
+                    layout.addView(name)
+                }
+            }
+
+            if(it is Event.GameStarted) {
+                GoDashBoard()
             }
         })
 
         binding.WaitPlayer.text = viewModel.roomName
 
         binding.buttonStartGame.setOnClickListener {
-            //GoDashBoard()
-            //viewModel.startChat().
+            viewModel.readyState()
         }
-
-
-
-
-
 
         return binding.root
         //return inflater.inflate(R.layout.fragment_waiting_room, container, false)
