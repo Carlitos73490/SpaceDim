@@ -38,6 +38,9 @@ class LoginFragment : Fragment() {
     private var  fragmentLoginBinding: FragmentLoginBinding? = null
 
 
+    private val bundle = Bundle()  // Construction of passed arguments to waiting room.
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,17 +61,16 @@ class LoginFragment : Fragment() {
             GoWaitingRoom()
         }
 
+
         return binding.root
         //return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     fun  GoWaitingRoom(){
-        val bundle = Bundle()  // Construction of passed arguments to waiting room.
-        bundle.putString("RoomName", "TestPassageNomRoom")
-        bundle.putString("UserName", "TestPassageNomUser")
+        bundle.putString("RoomName", viewModel.TextRoom.value)
+        bundle.putString("UserName", viewModel.TextLogin.value)
         requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
             NavHostFragment.findNavController(this)
-
                 .navigate(R.id.action_loginFragment_to_waitingRoomFragment,bundle)
         }
     }

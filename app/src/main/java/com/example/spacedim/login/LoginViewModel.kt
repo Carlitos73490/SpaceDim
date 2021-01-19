@@ -30,13 +30,20 @@ class LoginViewModel : ViewModel() {
     val response: LiveData<String>
         get() = _response
 
-
     // The internal MutableLiveData String that stores the most recent response
     private val _TextLogin = MutableLiveData<String>()
 
     // The external immutable LiveData for the response String
     val TextLogin: LiveData<String>
         get() = _TextLogin
+
+    // The internal MutableLiveData String that stores the most recent response
+    private val _TextRoom = MutableLiveData<String>()
+
+    // The external immutable LiveData for the response String
+    val TextRoom: LiveData<String>
+        get() = _TextRoom
+
 
     init {
     }
@@ -90,12 +97,21 @@ class LoginViewModel : ViewModel() {
             })
     }
 
-    fun onTextChanged(
+    fun onTextChangedLogin(
         s: CharSequence,
         start: Int,
         before: Int,
         count: Int
     ) {
+        println(("$s"))
         _TextLogin.value = ("$s")
+    }
+    fun onTextChangedRoom(
+        s: CharSequence,
+        start: Int,
+        before: Int,
+        count: Int
+    ) {
+        _TextRoom.value = ("$s")
     }
 }
