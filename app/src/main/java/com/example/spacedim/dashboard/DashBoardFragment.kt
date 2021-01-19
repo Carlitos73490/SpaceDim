@@ -8,14 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentDashBoardBinding
-import okhttp3.*
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DashBoardFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DashBoardFragment : Fragment() {
     private var fragmentDashBoardBinding: FragmentDashBoardBinding? = null
 
@@ -36,12 +30,29 @@ class DashBoardFragment : Fragment() {
         fragmentDashBoardBinding = binding
 
 
+        binding.buttonEndGame.setOnClickListener {
+            GoEnd()
+        }
 
-        //binding.buttonEndGame
-        //}
+        binding.buttonWinGame.setOnClickListener {
+            GoWin()
+        }
+
         return binding.root
         //return inflater.inflate(R.layout.fragment_waiting_room, container, false)
     }
-
-
+    fun GoEnd() {
+        requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
+            NavHostFragment.findNavController(this)
+                .navigate(R.id.action_dashBoardFragment_to_endFragment)
+        }
     }
+
+    fun GoWin() {
+        requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
+            NavHostFragment.findNavController(this)
+                .navigate(R.id.action_dashBoardFragment_to_winFragment)
+        }
+    }
+
+}
