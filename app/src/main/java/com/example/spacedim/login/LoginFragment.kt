@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentLoginBinding
@@ -25,14 +26,18 @@ import org.json.JSONObject
  * create an instance of this fragment.
  */
 class LoginFragment : Fragment() {
+
+    /**
+     * Lazily initialize our [LoginViewModel].
+     */
+    private val viewModel: LoginViewModel by lazy {
+        ViewModelProvider(this).get(LoginViewModel::class.java)
+    }
+
+
     private var  fragmentLoginBinding: FragmentLoginBinding? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_login)
 
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +47,19 @@ class LoginFragment : Fragment() {
         val binding = FragmentLoginBinding.inflate(inflater, container, false)
         fragmentLoginBinding = binding
 
+        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
+        binding.lifecycleOwner = this
+
+        // Giving the binding access to the LoginViewModel
+        binding.loginViewModel = viewModel
+
         binding.buttonConnection.setOnClickListener {
+            viewModel.getConnectionProperty()
+            GoWaitingRoom()
+        }
+
+
+    /*    binding.buttonConnection.setOnClickListener {
             val client = OkHttpClient()
             val moshi = Moshi.Builder().build()
             val playerJsonAdapter = moshi.adapter(LoginFragment.Player::class.java)
@@ -130,7 +147,7 @@ class LoginFragment : Fragment() {
                     }
                 }
             })
-        }
+        }*/
         return binding.root
         //return inflater.inflate(R.layout.fragment_login, container, false)
     }
@@ -142,7 +159,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    @JsonClass(generateAdapter = true)
-    data class Player(var id: Int?,var name : String?,var avatar: String?,var score: Int?,var state: String?)
+/*    @JsonClass(generateAdapter = true)
+    data class Player(var id: Int?,var name : String?,var avatar: String?,var score: Int?,var state: String?)*/
 
 }
