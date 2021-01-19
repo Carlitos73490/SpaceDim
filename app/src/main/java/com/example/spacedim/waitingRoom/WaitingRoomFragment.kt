@@ -13,11 +13,30 @@ import com.example.spacedim.R
 import com.example.spacedim.api.Event
 import com.example.spacedim.databinding.FragmentWaitingRoomBinding
 
+
+
 class WaitingRoomFragment : Fragment() {
+
 
     private var fragmentWaitingRoomBinding: FragmentWaitingRoomBinding? = null
     var list = null
     private lateinit var viewModel: WaitingViewModel
+
+    private var RoomName: String? = null
+    private var UserName : String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            println("----------------------------------------Test Reception Arguments")
+            RoomName = it.getString("RoomName")
+            println(RoomName)
+            UserName = it.getString("UserName")
+            println(UserName)
+
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
