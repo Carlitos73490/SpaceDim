@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
 import com.example.spacedim.R
+import com.example.spacedim.api.SocketListener
 import com.example.spacedim.databinding.FragmentWaitingRoomBinding
 import okhttp3.*
 
@@ -30,7 +31,13 @@ class WaitingRoomFragment : Fragment() {
         val binding = FragmentWaitingRoomBinding.inflate(inflater, container, false)
         fragmentWaitingRoomBinding = binding
 
-        val ws = SocketListener().run()
+        val client = OkHttpClient()
+        val request =
+            Request.Builder()
+                .url("ws://spacedim.async-agency.com:8081/ws/join/annecyGoRoom2/1")
+                .build()
+        val listener = SocketListener()
+        val ws = client.newWebSocket(request, listener)
 
         binding.buttonStartGame.setOnClickListener {
             GoDashBoard()
@@ -43,28 +50,6 @@ class WaitingRoomFragment : Fragment() {
         requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
             NavHostFragment.findNavController(this)
                 .navigate(R.id.action_waitingRoomFragment_to_dashBoardFragment)
-        }
-    }
-
-    class SocketListener : WebSocketListener() {
-        fun run() {
-            println("new web socket")
-            val client = OkHttpClient()
-            val request =
-                Request.Builder()
-                    .url("ws://spacedim.async-agency.com:8081/ws/join/roomTest/1")
-                    .build()
-            val ws = client.newWebSocket(request, this)
-        }
-
-        override fun onOpen(webSocket: WebSocket, response: Response) {
-            println("onOpen")
-            println(response)
-        }
-
-        override fun onMessage(webSocket: WebSocket, response: String) {
-            println("onMessage")
-            println(response)
         }
     }
 }

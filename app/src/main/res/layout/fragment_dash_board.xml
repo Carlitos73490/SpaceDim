@@ -15,7 +15,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#000000"
+            android:background="@drawable/fondgalaxy"
             android:orientation="vertical"
             tools:context=".dashboard.DashBoardFragment">
 
