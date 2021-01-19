@@ -10,12 +10,12 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".WaitingRoomFragment">
+        tools:context=".waitingRoom.WaitingRoomFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".WaitingRoomFragment"
+            tools:context=".waitingRoom.WaitingRoomFragment"
             android:background="@color/black">
 
             <TextView
@@ -126,5 +126,6 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </FrameLayout>
 </layout>

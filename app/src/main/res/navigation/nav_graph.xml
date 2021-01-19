@@ -39,6 +39,15 @@
         android:label="fragment_win"
         tools:layout="@layout/fragment_win" />
     <fragment
+        android:id="@+id/waitingRoomFragment"
+        android:name="com.example.spacedim.waitingRoom.WaitingRoomFragment"
+        android:label="fragment_waiting_room"
+        tools:layout="@layout/fragment_waiting_room" >
+        <action
+            android:id="@+id/action_waitingRoomFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/dashBoardFragment"
         android:name="com.example.spacedim.dashboard.DashBoardFragment"
         android:label="fragment_dash_board"
@@ -49,14 +58,5 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_winFragment"
             app:destination="@id/winFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/waitingRoomFragment"
-        android:name="com.example.spacedim.waitingRoom.WaitingRoomFragment"
-        android:label="fragment_waiting_room"
-        tools:layout="@layout/fragment_waiting_room" >
-        <action
-            android:id="@+id/action_waitingRoomFragment_to_dashBoardFragment2"
-            app:destination="@id/dashBoardFragment" />
     </fragment>
 </navigation>
