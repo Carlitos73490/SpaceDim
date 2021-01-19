@@ -12,7 +12,7 @@ import okhttp3.WebSocket
 
 class WaitingViewModel() : ViewModel() {
 
-    val roomName = "annecyRoom82"
+    val roomName = "annecyRoom823"
 
     val httpClient = OkHttpClient()
     val request =
@@ -34,7 +34,7 @@ class WaitingViewModel() : ViewModel() {
     }
 
     init {
-        Log.i("WaitingViewModel", "init listUser viewModel")
+        Log.i("WaitingViewModel", "INIT WAITING VIEW MODEL")
     }
 
 }

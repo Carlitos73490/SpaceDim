@@ -6,6 +6,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.spacedim.R
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

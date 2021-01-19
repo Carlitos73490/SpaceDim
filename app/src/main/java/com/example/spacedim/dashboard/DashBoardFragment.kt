@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import com.example.spacedim.R
@@ -18,6 +19,7 @@ import com.example.spacedim.waitingRoom.WaitingViewModel
 
 class DashBoardFragment : Fragment() {
     private var fragmentDashBoardBinding: FragmentDashBoardBinding? = null
+
     private lateinit var viewModel: DashBoardViewModel
 
     override fun onCreateView(
@@ -30,7 +32,14 @@ class DashBoardFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(DashBoardViewModel::class.java)
 
-        viewModel.startChat().observe(viewLifecycleOwner, Observer {
+    /*    viewModel.startChat().observe(viewLifecycleOwner, Observer {
+
+            println("in observer dash")
+
+            if(it is Event.WaitingForPlayer) {
+                println("[DASHBOARD] WAITING FOR PLAYER")
+            }
+
             if(it is Event.NextAction) {
                 println("[DASHBOARD] NEXT ACTION")
             }
@@ -39,7 +48,7 @@ class DashBoardFragment : Fragment() {
                 println("[DASHBOARD] GAME START")
             }
         })
-
+*/
        /* binding.buttonEndGame.setOnClickListener {
             GoEnd()
         }
