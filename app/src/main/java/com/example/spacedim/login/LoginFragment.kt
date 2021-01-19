@@ -58,104 +58,18 @@ class LoginFragment : Fragment() {
             GoWaitingRoom()
         }
 
-
-    /*    binding.buttonConnection.setOnClickListener {
-            val client = OkHttpClient()
-            val moshi = Moshi.Builder().build()
-            val playerJsonAdapter = moshi.adapter(LoginFragment.Player::class.java)
-            val request = Request.Builder()
-                .url("https://spacedim.async-agency.com/api/user/find/" + binding.editTextLogin.text)
-                .build()
-            client.newCall(request).enqueue(object : Callback {
-                override fun onFailure(call: Call, e: IOException) {
-                    e.printStackTrace()
-                }
-                override fun onResponse(call: Call, response: Response) {
-                    response.use {
-
-                        if(response.isSuccessful) {
-                            val player = playerJsonAdapter.fromJson(response.body!!.source())
-                            println(player!!.id)
-                            println(player!!.name)
-
-                            activity!!.runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
-                            Toast.makeText(
-                                activity,
-                                " " + player!!.id + " " + player!!.name + " Connected",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            }
-
-                            GoWaitingRoom()
-                        } else{
-
-
-                            activity!!.runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
-                                binding.textViewResponseHttp.text = "Connection failed $response"
-                            }
-
-                            throw IOException("Unexpected code $response")
-                        }
-                    }
-                }
-            })
-
-        }
-
-        binding.buttonRegister.setOnClickListener {
-
-            // create your json here
-            val jsonObject = JSONObject()
-            try {
-                jsonObject.put("name", binding.editTextLogin.text)
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
-
-            val client = OkHttpClient()
-            val moshi = Moshi.Builder().build()
-            val playerJsonAdapter = moshi.adapter(LoginFragment.Player::class.java)
-            val mediaType = "application/json; charset=utf-8".toMediaType()
-            val body = jsonObject.toString().toRequestBody(mediaType)
-            val request = Request.Builder()
-                .url("https://spacedim.async-agency.com/api/user/register")
-                .post(body)
-                .build()
-            client.newCall(request).enqueue(object : Callback {
-                override fun onFailure(call: Call, e: IOException) {
-                    e.printStackTrace()
-
-                }
-                override fun onResponse(call: Call, response: Response) {
-                    response.use {
-                        if (response.isSuccessful) {
-                            val player = playerJsonAdapter.fromJson(response.body!!.source())
-                            println(player!!.id)
-                            println(player!!.name)
-                            activity!!.runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
-                                binding.textViewResponseHttp.text =
-                                    "Player " + player!!.name + " " + player!!.id + " Sucessfuly created, you can now launch"
-                            }
-
-                        }else{
-
-                            activity!!.runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
-                                binding.textViewResponseHttp.text = "registration failed $response"
-                            }
-                            throw IOException("Unexpected code $response")
-                        }
-                    }
-                }
-            })
-        }*/
         return binding.root
         //return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     fun  GoWaitingRoom(){
+        val bundle = Bundle()  // Construction of passed arguments to waiting room.
+        bundle.putString("RoomName", "TestPassageNomRoom")
+        bundle.putString("UserName", "TestPassageNomUser")
         requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
             NavHostFragment.findNavController(this)
-                .navigate(R.id.action_loginFragment_to_waitingRoomFragment)
+
+                .navigate(R.id.action_loginFragment_to_waitingRoomFragment,bundle)
         }
     }
 

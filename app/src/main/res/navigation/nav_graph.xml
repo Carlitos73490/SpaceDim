@@ -60,6 +60,12 @@
         <action
             android:id="@+id/action_waitingRoomFragment_to_dashBoardFragment"
             app:destination="@id/dashBoardFragment" />
+        <argument
+            android:name="roomName"
+            app:argType="string" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/dashBoardFragment"

@@ -39,11 +39,7 @@ class LoginViewModel : ViewModel() {
         get() = _TextLogin
 
     init {
-       // _TextLogin.value = "carlos"
-
     }
-
-
     /**
      * Sets the value of the status LiveData to the Login API status.
      */
