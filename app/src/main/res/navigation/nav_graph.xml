@@ -32,12 +32,26 @@
         android:id="@+id/endFragment"
         android:name="com.example.spacedim.ends.EndFragment"
         android:label="fragment_end"
-        tools:layout="@layout/fragment_end" />
+        tools:layout="@layout/fragment_end" >
+        <action
+            android:id="@+id/action_endFragment_to_waitingRoomFragment"
+            app:destination="@id/waitingRoomFragment" />
+        <action
+            android:id="@+id/action_endFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/winFragment"
         android:name="com.example.spacedim.ends.winFragment"
         android:label="fragment_win"
-        tools:layout="@layout/fragment_win" />
+        tools:layout="@layout/fragment_win" >
+        <action
+            android:id="@+id/action_winFragment_to_waitingRoomFragment"
+            app:destination="@id/waitingRoomFragment" />
+        <action
+            android:id="@+id/action_winFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/waitingRoomFragment"
         android:name="com.example.spacedim.waitingRoom.WaitingRoomFragment"
