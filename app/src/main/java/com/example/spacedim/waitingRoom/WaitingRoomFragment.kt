@@ -35,6 +35,9 @@ class WaitingRoomFragment : Fragment() {
             UserName = it.getString("UserName")
             println(UserName)
 
+            viewModel = ViewModelProvider(this).get(WaitingViewModel::class.java)
+
+            viewModel.startSocket(RoomName!!, UserName!!)
         }
     }
 
@@ -47,8 +50,6 @@ class WaitingRoomFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentWaitingRoomBinding.inflate(inflater, container, false)
         fragmentWaitingRoomBinding = binding
-
-        viewModel = ViewModelProvider(this).get(WaitingViewModel::class.java)
 
         viewModel.startChat().observe(viewLifecycleOwner, Observer {
 
@@ -74,7 +75,7 @@ class WaitingRoomFragment : Fragment() {
             }
         })
 
-        binding.WaitPlayer.text = viewModel.roomName
+        binding.WaitPlayer.text = viewModel._roomName.value
 
         binding.buttonStartGame.setOnClickListener {
             viewModel.readyState()
