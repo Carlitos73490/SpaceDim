@@ -25,6 +25,8 @@ import org.json.JSONObject
  * Use the [LoginFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+enum class LoginApiStatus { CONNECTED,ERROR}
+
 class LoginFragment : Fragment() {
 
     /**
@@ -56,10 +58,10 @@ class LoginFragment : Fragment() {
         // Giving the binding access to the LoginViewModel
         binding.loginViewModel = viewModel
 
-        binding.buttonConnection.setOnClickListener {
+        //binding.buttonConnection.setOnClickListener {
             viewModel.getConnectionProperty()
-            GoWaitingRoom()
-        }
+        //    GoWaitingRoom()
+      //}
 
 
         return binding.root

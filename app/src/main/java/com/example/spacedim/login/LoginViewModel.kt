@@ -21,7 +21,10 @@ import retrofit2.Response
  */
 class LoginViewModel : ViewModel() {
 
+    private val _status = MutableLiveData<LoginApiStatus>()
 
+    val status: LiveData<LoginApiStatus>
+        get() = _status
 
     // The internal MutableLiveData String that stores the most recent response
     private val _response = MutableLiveData<String>()
@@ -51,20 +54,30 @@ class LoginViewModel : ViewModel() {
      * Sets the value of the status LiveData to the Login API status.
      */
      fun getConnectionProperty() {
+        //_status.value = LoginApiStatus.LOADING
+
+
         LoginApi.retrofitService.getPropertyConnection(_TextLogin.value).enqueue(
             object: Callback<PlayerProperty> {
                 override fun onFailure(call: Call<PlayerProperty>, t: Throwable) {
                     _response.value =
                         "Connection Failed for " + _TextLogin.value
-
+                    _status.value = LoginApiStatus.ERROR
                 }
 
                 override fun onResponse(
                     call: Call<PlayerProperty>,
                     response: Response<PlayerProperty>
                 ) {
-                    _response.value =
-                        "Success: ${response.body()?.name} " + _TextLogin.value
+                    if(response.isSuccessful){
+                        _response.value = "Connected "
+                        _status.value = LoginApiStatus.CONNECTED
+                    } else {
+                        _response.value = "Login incorrect"
+                        _status.value = LoginApiStatus.ERROR
+                    }
+
+
 
                 }
 

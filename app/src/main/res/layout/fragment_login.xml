@@ -20,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/fondgalaxy"
-            tools:context=".login.LoginFragment">
+            tools:context=".login.LoginFragment"
+            >
 
             <ImageView
                 android:id="@+id/titleSpaceDim"
@@ -102,8 +103,9 @@
                 app:layout_constraintStart_toStartOf="@+id/titleSpaceDim"
                 app:layout_constraintTop_toBottomOf="@+id/editTextLogin"
                 tools:layout_editor_absoluteX="43dp"
-                tools:layout_editor_absoluteY="504dp" />
-               <!-- android:onClick="@{() -> LoginViewModel.getConnectionProperty()}"-->
+                tools:layout_editor_absoluteY="504dp"
+                app:LoginApiStatus="@{LoginViewModel.status}"
+                android:onClick="@{() -> LoginViewModel.getConnectionProperty()}" />
 
             <TextView
                 android:id="@+id/textViewResponseHttp"
