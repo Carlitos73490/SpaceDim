@@ -3,6 +3,7 @@ package com.example.spacedim.waitingRoom
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.spacedim.api.SocketListener
+import com.example.spacedim.api.UIElement
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -12,22 +13,24 @@ import okhttp3.WebSocket
 
 class WaitingViewModel() : ViewModel() {
 
-    //val roomName = "annecyRoom823"
+    val _gameOver = MutableLiveData<Boolean>()
+    val gameOver: LiveData<Boolean> get () = _gameOver
+
+    val _listUI = MutableLiveData<List<UIElement>>()
+    val listUI: LiveData<List<UIElement>> get () = _listUI
+
+    val _score = MutableLiveData<Int>()
+    val score: LiveData<Int> get() = _score
+
+    val _level = MutableLiveData<Int>()
+    val level: LiveData<Int> get() = _level
 
     val _roomName = MutableLiveData<String>()
     val roomName: LiveData<String> get() = _roomName
 
     val _idUser = MutableLiveData<String>()
     val idUser: LiveData<String> get() = _idUser
-/*
-    val httpClient = OkHttpClient()
-    val request =
-        Request.Builder()
-            .url("ws://spacedim.async-agency.com:8081/ws/join/${roomName.value}/${idUser.value}")
-            .build()
-    val listener = SocketListener()
-    var webSocket = httpClient.newWebSocket(request, listener)
-*/
+
     val _httpClient = MutableLiveData<OkHttpClient>()
     val httpClient: LiveData<OkHttpClient> get() = _httpClient
 
@@ -65,6 +68,11 @@ class WaitingViewModel() : ViewModel() {
 
     fun readyState() {
         ws.value!!.send("{\"type\":\"READY\", \"value\":true}")
+    }
+
+    fun newPlayerAction(type: String, id: Int, content: String) {
+        println("player action")
+        ws.value!!.send("{\"type\":\"PLAYER_ACTION\", \"uiElement\":{\"type\":\""+type+"\",\"id\":"+id+",\"content\":\""+content+"\"}}")
     }
 
     init {

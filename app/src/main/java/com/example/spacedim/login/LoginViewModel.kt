@@ -63,11 +63,6 @@ class LoginViewModel : ViewModel() {
      * Sets the value of the status LiveData to the Login API status.
      */
      fun getConnectionProperty() {
-        println("get connection property")
-
-       // var idPlayer = -1;
-        //_status.value = LoginApiStatus.LOADING
-
         LoginApi.retrofitService.getPropertyConnection(_TextLogin.value).enqueue(
             object: Callback<PlayerProperty> {
                 override fun onFailure(call: Call<PlayerProperty>, t: Throwable) {

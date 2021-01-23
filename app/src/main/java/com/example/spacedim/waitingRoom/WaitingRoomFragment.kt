@@ -1,17 +1,21 @@
 package com.example.spacedim.waitingRoom
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import com.example.spacedim.R
 import com.example.spacedim.api.Event
+import com.example.spacedim.api.State
 import com.example.spacedim.databinding.FragmentWaitingRoomBinding
 import com.example.spacedim.main.MainActivity
 
@@ -21,26 +25,20 @@ class WaitingRoomFragment : Fragment() {
 
 
     private var fragmentWaitingRoomBinding: FragmentWaitingRoomBinding? = null
-    private lateinit var viewModel: WaitingViewModel
 
-    private var RoomName: String? = null
-    private var UserName : String? = null
+   // private lateinit var viewModel: WaitingViewModel
+    private val viewModel: WaitingViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            println("----------------------------------------Test Reception Arguments")
-            RoomName = it.getString("RoomName")
-            println(RoomName)
-            UserName = it.getString("UserName")
-            println(UserName)
 
-            viewModel = ViewModelProvider(this).get(WaitingViewModel::class.java)
+            viewModel._roomName.value = it.getString("RoomName")
+            viewModel._idUser.value = it.getString("UserName")
 
-            viewModel.startSocket(RoomName!!, UserName!!)
+            viewModel.startSocket(viewModel.roomName.value!!, viewModel.idUser.value!!)
         }
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,6 +48,8 @@ class WaitingRoomFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentWaitingRoomBinding.inflate(inflater, container, false)
         fragmentWaitingRoomBinding = binding
+
+        viewModel._gameOver.value = false
 
         viewModel.startChat().observe(viewLifecycleOwner, Observer {
 
@@ -66,11 +66,16 @@ class WaitingRoomFragment : Fragment() {
                     name.textSize = 20f
                     name.text = elem.name
 
+                    if(elem.state == State.READY) {
+                        name.setTextColor(Color.parseColor("#2BDF46"));
+                    }
+
                     layout.addView(name)
                 }
             }
 
             if(it is Event.GameStarted) {
+                viewModel._listUI.value = it.uiElementList
                 GoDashBoard()
             }
         })

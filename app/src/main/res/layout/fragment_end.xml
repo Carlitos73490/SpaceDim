@@ -14,9 +14,7 @@
 
         <!-- TODO: Update blank fragment layout -->
 
-            <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context=".ends.End"
@@ -97,16 +95,16 @@
                     android:id="@+id/buttonLeave"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="LEAVE"
-                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/linearLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/button"
-                    android:textSize="25dip"
-                    android:backgroundTint="#910000"
+                    android:layout_marginTop="28dp"
+                    android:backgroundTint="#876709"
                     android:padding="10dp"
-                    app:cornerRadius="10dp"/>
+                    android:text="LEAVE"
+                    android:textSize="25dip"
+                    app:cornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonRetry" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

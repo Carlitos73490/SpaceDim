@@ -63,19 +63,11 @@ class LoginFragment : Fragment() {
 
         viewModel.idPlayer.observe(viewLifecycleOwner, Observer {
 
-            println("OBSERVE CHANGE")
-
             if(it != -1) {
-
-                println("not -1")
-
                 if (it != null) {
                     GoWaitingRoom(it)
                 }
             } else {
-
-                println("-1")
-
                 viewModel.getRegistrationProperty()
             }
         })
