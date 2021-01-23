@@ -62,24 +62,29 @@ class LoginFragment : Fragment() {
         binding.loginViewModel = viewModel
 
         viewModel.idPlayer.observe(viewLifecycleOwner, Observer {
+
+            println("OBSERVE CHANGE")
+
             if(it != -1) {
+
+                println("not -1")
+
                 if (it != null) {
                     GoWaitingRoom(it)
                 }
+            } else {
+
+                println("-1")
+
+                viewModel.getRegistrationProperty()
             }
         })
 
         binding.buttonConnection.setOnClickListener {
             viewModel.getConnectionProperty()
         }
-      /*  //binding.buttonConnection.setOnClickListener {
-            viewModel.getConnectionProperty()
-        //    GoWaitingRoom()
-      //}*/
-
 
         return binding.root
-        //return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     fun  GoWaitingRoom(id : Int){

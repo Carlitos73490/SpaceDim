@@ -33,7 +33,7 @@ class LoginViewModel : ViewModel() {
 
     val status: LiveData<LoginApiStatus>
         get() = _status
-    
+
 
     // The internal MutableLiveData String that stores the most recent response
     private val _response = MutableLiveData<String>()
@@ -71,6 +71,7 @@ class LoginViewModel : ViewModel() {
         LoginApi.retrofitService.getPropertyConnection(_TextLogin.value).enqueue(
             object: Callback<PlayerProperty> {
                 override fun onFailure(call: Call<PlayerProperty>, t: Throwable) {
+
                     _response.value =
                         "Connection Failed for " + _TextLogin.value
                     _idPlayer.value = -1
@@ -86,6 +87,8 @@ class LoginViewModel : ViewModel() {
                     response.let {
                         if(it.body() != null) {
                             _idPlayer.value = it.body()?.id!!
+                        } else {
+                            _idPlayer.value = -1
                         }
                     }
                 }
@@ -101,6 +104,7 @@ class LoginViewModel : ViewModel() {
                 override fun onFailure(call: Call<PlayerProperty>, t: Throwable) {
                     _response.value =
                         "Connection Failed"
+                    _idPlayer.value = -2
                 }
 
                 override fun onResponse(
@@ -109,6 +113,11 @@ class LoginViewModel : ViewModel() {
                 ) {
                     _response.value =
                         "Success: ${response.body()?.name}"
+                    response.let {
+                        if(it.body() != null) {
+                            _idPlayer.value = it.body()?.id!!
+                        }
+                    }
                 }
 
             })
