@@ -29,6 +29,12 @@ class LoginViewModel : ViewModel() {
     val idPlayer: LiveData<Int>
         get() = _idPlayer
 
+    private val _status = MutableLiveData<LoginApiStatus>()
+
+    val status: LiveData<LoginApiStatus>
+        get() = _status
+    
+
     // The internal MutableLiveData String that stores the most recent response
     private val _response = MutableLiveData<String>()
 
@@ -57,18 +63,18 @@ class LoginViewModel : ViewModel() {
      * Sets the value of the status LiveData to the Login API status.
      */
      fun getConnectionProperty() {
-
         println("get connection property")
 
        // var idPlayer = -1;
+        //_status.value = LoginApiStatus.LOADING
 
         LoginApi.retrofitService.getPropertyConnection(_TextLogin.value).enqueue(
             object: Callback<PlayerProperty> {
                 override fun onFailure(call: Call<PlayerProperty>, t: Throwable) {
                     _response.value =
                         "Connection Failed for " + _TextLogin.value
-
                     _idPlayer.value = -1
+                   // _status.value = LoginApiStatus.ERROR
                 }
 
                 override fun onResponse(
