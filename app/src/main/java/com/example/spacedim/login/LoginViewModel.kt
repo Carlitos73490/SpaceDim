@@ -4,8 +4,12 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.NavHostFragment
 import com.example.spacedim.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import network.LoginApi
 import network.PlayerObjetName
 import network.PlayerProperty
@@ -21,7 +25,9 @@ import retrofit2.Response
  */
 class LoginViewModel : ViewModel() {
 
-
+    private val _idPlayer = MutableLiveData<Int>()
+    val idPlayer: LiveData<Int>
+        get() = _idPlayer
 
     // The internal MutableLiveData String that stores the most recent response
     private val _response = MutableLiveData<String>()
@@ -51,12 +57,18 @@ class LoginViewModel : ViewModel() {
      * Sets the value of the status LiveData to the Login API status.
      */
      fun getConnectionProperty() {
+
+        println("get connection property")
+
+       // var idPlayer = -1;
+
         LoginApi.retrofitService.getPropertyConnection(_TextLogin.value).enqueue(
             object: Callback<PlayerProperty> {
                 override fun onFailure(call: Call<PlayerProperty>, t: Throwable) {
                     _response.value =
                         "Connection Failed for " + _TextLogin.value
 
+                    _idPlayer.value = -1
                 }
 
                 override fun onResponse(
@@ -64,25 +76,25 @@ class LoginViewModel : ViewModel() {
                     response: Response<PlayerProperty>
                 ) {
                     _response.value =
-                        "Success: ${response.body()?.name} " + _TextLogin.value
-
+                        "Response: ${response.body()?.name} " + _TextLogin.value
+                    response.let {
+                        if(it.body() != null) {
+                            _idPlayer.value = it.body()?.id!!
+                        }
+                    }
                 }
-
             })
     }
 
     fun getRegistrationProperty() {
 
-
         val newPlayer = PlayerObjetName(_TextLogin.value)
-
 
         LoginApi.retrofitService.postPropertyRegistration(newPlayer).enqueue(
             object: Callback<PlayerProperty> {
                 override fun onFailure(call: Call<PlayerProperty>, t: Throwable) {
                     _response.value =
                         "Connection Failed"
-
                 }
 
                 override fun onResponse(
@@ -91,7 +103,6 @@ class LoginViewModel : ViewModel() {
                 ) {
                     _response.value =
                         "Success: ${response.body()?.name}"
-
                 }
 
             })

@@ -38,7 +38,7 @@
                 android:layout_height="59dp"
                 android:background="@drawable/background_border"
                 android:ems="10"
-                android:hint="userName"
+                android:hint="Username"
                 android:inputType="textPersonName"
                 android:onTextChanged="@{LoginViewModel.onTextChangedLogin}"
                 android:paddingLeft="20px"
@@ -51,26 +51,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <EditText
-                android:id="@+id/editTextRoom"
-                android:layout_width="240dp"
-                android:layout_height="59dp"
-                android:background="@drawable/background_border"
-                android:ems="10"
-                android:hint="roomName"
-                android:inputType="textPersonName"
-                android:onTextChanged="@{LoginViewModel.onTextChangedRoom}"
-                android:paddingLeft="20px"
-                android:text=""
-                android:textColor="#8E8E8E"
-                android:textColorHint="#FFE436"
-                app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextLogin"
-                app:layout_constraintVertical_bias="0.62" />
-
+            <!--
             <Button
                 android:id="@+id/buttonRegister"
                 android:layout_width="125dp"
@@ -88,22 +69,45 @@
                 tools:layout_editor_absoluteX="250dp"
                 tools:layout_editor_absoluteY="523dp"
                 android:onClick="@{() -> LoginViewModel.getRegistrationProperty()}"/>
+-->
+            <!-- android:onClick="@{() -> LoginViewModel.getConnectionProperty()}"-->
+
+            <EditText
+                android:id="@+id/editTextRoom"
+                android:layout_width="240dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_border"
+                android:ems="10"
+                android:hint="Room Name"
+                android:inputType="textPersonName"
+                android:onTextChanged="@{LoginViewModel.onTextChangedRoom}"
+                android:paddingLeft="20px"
+                android:text=""
+                android:textColor="#8E8E8E"
+                android:textColorHint="#FFE436"
+                app:layout_constraintBottom_toTopOf="@+id/buttonConnection"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextLogin"
+                app:layout_constraintVertical_bias="0.0" />
 
             <Button
                 android:id="@+id/buttonConnection"
-                android:layout_width="125dp"
-                android:layout_height="50dp"
+                android:layout_width="235dp"
+                android:layout_height="66dp"
                 android:backgroundTint="#FFE436"
                 android:text="Launch"
                 android:textColor="#000"
                 app:cornerRadius="10dp"
                 app:iconTint="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/titleSpaceDim"
+                app:layout_constraintEnd_toEndOf="@+id/editTextRoom"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/editTextRoom"
                 app:layout_constraintTop_toBottomOf="@+id/editTextLogin"
-                tools:layout_editor_absoluteX="43dp"
-                tools:layout_editor_absoluteY="504dp" />
-               <!-- android:onClick="@{() -> LoginViewModel.getConnectionProperty()}"-->
+                app:layout_constraintVertical_bias="0.533" />
 
             <TextView
                 android:id="@+id/textViewResponseHttp"
@@ -112,7 +116,7 @@
                 android:text="@{LoginViewModel.response}"
 
                 android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonConnection"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextLogin" />

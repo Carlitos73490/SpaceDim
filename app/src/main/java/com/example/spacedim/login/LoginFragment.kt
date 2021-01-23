@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.example.spacedim.R
+import com.example.spacedim.api.Event
 import com.example.spacedim.databinding.FragmentLoginBinding
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
@@ -56,19 +59,24 @@ class LoginFragment : Fragment() {
         // Giving the binding access to the LoginViewModel
         binding.loginViewModel = viewModel
 
+        viewModel.idPlayer.observe(viewLifecycleOwner, Observer {
+            if(it != -1) {
+                if (it != null) {
+                    GoWaitingRoom(it)
+                }
+            }
+        })
+
         binding.buttonConnection.setOnClickListener {
             viewModel.getConnectionProperty()
-            GoWaitingRoom()
         }
-
-
         return binding.root
         //return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
-    fun  GoWaitingRoom(){
+    fun  GoWaitingRoom(id : Int){
         bundle.putString("RoomName", viewModel.TextRoom.value)
-        bundle.putString("UserName", viewModel.TextLogin.value)
+        bundle.putString("UserName", id.toString())
         requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
             NavHostFragment.findNavController(this)
                 .navigate(R.id.action_loginFragment_to_waitingRoomFragment,bundle)
