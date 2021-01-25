@@ -119,8 +119,10 @@ class DashBoardFragment : Fragment() {
 
         var textView = TextView(this.context)
         textView.text = text
+        textView.setTextColor(Color.parseColor("#FFE436"));
 
         var switchButton = Switch(this.context)
+
 
         switchButton.setOnClickListener{
             viewModel.newPlayerAction("SWITCH", id, text)
