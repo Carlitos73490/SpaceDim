@@ -63,8 +63,10 @@ class WaitingRoomFragment : Fragment() {
                 layout.removeAllViews()
                 for(elem in lUser) {
                     val name = TextView(this.context)
-                    name.textSize = 20f
-                    name.text = elem.name
+                    name.textSize = 50f;
+                    name.text = elem.name.toUpperCase();
+                    name.setTextColor(Color.parseColor("#FFE436"));
+
 
                     if(elem.state == State.READY) {
                         name.setTextColor(Color.parseColor("#2BDF46"));
