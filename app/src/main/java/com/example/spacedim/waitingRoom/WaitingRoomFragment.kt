@@ -23,10 +23,8 @@ import com.squareup.picasso.Picasso
 
 class WaitingRoomFragment : Fragment() {
 
-
     private var fragmentWaitingRoomBinding: FragmentWaitingRoomBinding? = null
 
-   // private lateinit var viewModel: WaitingViewModel
     private val viewModel: WaitingViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +43,7 @@ class WaitingRoomFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         val binding = FragmentWaitingRoomBinding.inflate(inflater, container, false)
         fragmentWaitingRoomBinding = binding
 
@@ -113,6 +111,9 @@ class WaitingRoomFragment : Fragment() {
         return binding.root
     }
 
+    /*
+    Go to fragment dashboard
+     */
     fun GoDashBoard() {
         requireActivity().runOnUiThread {
             NavHostFragment.findNavController(this)
@@ -120,6 +121,9 @@ class WaitingRoomFragment : Fragment() {
         }
     }
 
+    /*
+    Leave waiting room
+     */
     fun LeaveWaitingRoom() {
         requireActivity().runOnUiThread {
             NavHostFragment.findNavController(this)

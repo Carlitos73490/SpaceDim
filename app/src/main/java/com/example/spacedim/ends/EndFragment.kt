@@ -27,7 +27,7 @@ class EndFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         val binding = FragmentEndBinding.inflate(inflater, container, false)
         fragmentEndBinding = binding
 
@@ -43,20 +43,26 @@ class EndFragment : Fragment() {
         }
 
         return binding.root
-        //return inflater.inflate(R.layout.fragment_waiting_room, container, false)
     }
 
+    /*
+    Go to fragment login
+     */
     fun  GoLogin(){
-        requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
+        requireActivity().runOnUiThread {
             NavHostFragment.findNavController(this)
                 .navigate(R.id.action_endFragment_to_loginFragment)
         }
     }
+
+    /*
+    Go to fragment waiting room
+     */
     fun  GoWaitingRoom(){
             var bundle = Bundle()
             bundle.putString("RoomName", viewModel.roomName.value)
             bundle.putString("UserName", viewModel.idUser.value)
-            requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
+            requireActivity().runOnUiThread {
                 NavHostFragment.findNavController(this)
                     .navigate(R.id.action_endFragment_to_waitingRoomFragment,bundle)
         }

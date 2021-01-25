@@ -40,6 +40,9 @@ class WaitingViewModel() : ViewModel() {
     val _ws = MutableLiveData<WebSocket>()
     val ws: LiveData<WebSocket> get() = _ws
 
+    /*
+    Start websocket
+     */
     fun startSocket(room: String, id: String) {
 
         _roomName.value = room
@@ -59,6 +62,9 @@ class WaitingViewModel() : ViewModel() {
         _ws.value = webSocket
     }
 
+    /*
+    Start observer for livedata
+     */
     fun startChat(): LiveData<Any> {
         viewModelScope.launch(Dispatchers.IO) {
             httpClient.value!!.dispatcher.executorService.shutdown()
@@ -66,17 +72,23 @@ class WaitingViewModel() : ViewModel() {
         return listener.value!!.liveData
     }
 
+    /*
+    Set player status to ready
+     */
     fun readyState() {
         ws.value!!.send("{\"type\":\"READY\", \"value\":true}")
     }
 
+    /*
+    Send action player data to server
+     */
     fun newPlayerAction(type: String, id: Int, content: String) {
         println("player action")
         ws.value!!.send("{\"type\":\"PLAYER_ACTION\", \"uiElement\":{\"type\":\""+type+"\",\"id\":"+id+",\"content\":\""+content+"\"}}")
     }
 
     init {
-        Log.i("WaitingViewModel", "INIT WAITING VIEW MODEL")
+        Log.i("WaitingViewModel", "INIT VIEW MODEL")
     }
 
 }
