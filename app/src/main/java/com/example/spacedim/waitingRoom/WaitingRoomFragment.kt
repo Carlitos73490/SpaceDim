@@ -2,23 +2,23 @@ package com.example.spacedim.waitingRoom
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.os.bundleOf
+import androidx.core.view.marginRight
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import com.example.spacedim.R
 import com.example.spacedim.api.Event
 import com.example.spacedim.api.State
 import com.example.spacedim.databinding.FragmentWaitingRoomBinding
-import com.example.spacedim.main.MainActivity
-
+import com.squareup.picasso.Picasso
 
 
 class WaitingRoomFragment : Fragment() {
@@ -62,8 +62,21 @@ class WaitingRoomFragment : Fragment() {
 
                 layout.removeAllViews()
                 for(elem in lUser) {
+
+                    // Container
+                    var llayout = LinearLayout(this.context)
+                    llayout.setOrientation(LinearLayout.HORIZONTAL);
+
+                    // User avatar
+                    val layoutParams = LinearLayout.LayoutParams(100, 100)
+                    layoutParams.gravity = Gravity.CENTER_VERTICAL
+                    val image = ImageView(this.context)
+                    image.setLayoutParams(layoutParams)
+                    Picasso.get().load(elem.avatar).into(image)
+
+                    // User name
                     val name = TextView(this.context)
-                    name.textSize = 50f;
+                    name.textSize = 30f;
                     name.text = elem.name.toUpperCase();
                     name.setTextColor(Color.parseColor("#FFE436"));
 
@@ -72,7 +85,10 @@ class WaitingRoomFragment : Fragment() {
                         name.setTextColor(Color.parseColor("#2BDF46"));
                     }
 
-                    layout.addView(name)
+                    llayout.addView(image)
+                    llayout.addView(name)
+
+                    layout.addView(llayout)
                 }
             }
 
