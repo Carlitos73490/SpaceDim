@@ -101,14 +101,6 @@ class DashBoardFragment : Fragment() {
 
     fun createButton(id: Int, text: String): Button {
 
-        /*
-        <Button
-        android:id="@+id/button2"
-        style="@style/button_yellow"
-        android:text="@string/button2"
-        app:cornerRadius="10dp" />
-         */
-
         var button = Button(this.context)
         button.text = text
         button.setTextColor(Color.BLACK)
@@ -140,93 +132,4 @@ class DashBoardFragment : Fragment() {
         return layout
 
     }
-
-    fun CreateLayout() {
-        /*
-
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-        android:background="@drawable/switch_border"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:cornerRadius="10dp">
-
-        <TextView
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button1"
-        android:textColor="@color/black"
-        android:textSize="15dip"
-        android:textStyle="bold"/>
-
-        <Switch
-        android:id="@+id/simpleSwitch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="false" />
-
-        </LinearLayout>
-
-        <Button
-        android:id="@+id/button2"
-        style="@style/button_yellow"
-        android:text="@string/button2"
-        app:cornerRadius="10dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <Button
-        android:id="@+id/button3"
-        android:text="@string/button3"
-        style="@style/button_yellow"
-        app:cornerRadius="10dp"/>
-
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-        android:background="@drawable/switch_border"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:cornerRadius="10dp">
-
-        <TextView
-        android:id="@+id/switch2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button4"
-        android:textColor="@color/black"
-        android:textSize="15dip"
-        android:textStyle="bold"/>
-
-        <Switch
-        android:id="@+id/simpleSwitch2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="false" />
-
-        </LinearLayout>
-
-        </LinearLayout>
-
-        */
-    }
-
 }
