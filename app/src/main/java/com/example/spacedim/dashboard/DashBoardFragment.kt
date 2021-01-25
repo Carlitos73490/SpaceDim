@@ -44,15 +44,7 @@ class DashBoardFragment : Fragment() {
         var UIList = viewModel.listUI.value
 
         if (UIList != null) {
-            for(elem in UIList) {
-                if(elem is UIElement.Button) {
-                    binding.actionLayout.addView(createButton(elem.id, elem.content))
-                }
-
-                if(elem is UIElement.Switch) {
-                    binding.actionLayout.addView(createSwitch(elem.id, elem.content))
-                }
-            }
+            refreshButton(UIList, binding)
         }
 
         viewModel.startChat().observe(viewLifecycleOwner, Observer {
@@ -78,22 +70,38 @@ class DashBoardFragment : Fragment() {
                 }
 
             }
+
+            if(it is Event.NextLevel) {
+                refreshButton(it.uiElementList, binding)
+            }
         })
 
         return binding.root
-        //return inflater.inflate(R.layout.fragment_waiting_room, container, false)
     }
 
+    fun refreshButton(UIList: List<UIElement>, binding: FragmentDashBoardBinding) {
+        if (UIList != null) {
+            for(elem in UIList) {
+                if(elem is UIElement.Button) {
+                    binding.actionLayout.addView(createButton(elem.id, elem.content))
+                }
+
+                if(elem is UIElement.Switch) {
+                    binding.actionLayout.addView(createSwitch(elem.id, elem.content))
+                }
+            }
+        }
+    }
 
     fun GoEnd() {
-        requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
+        requireActivity().runOnUiThread {
             NavHostFragment.findNavController(this)
                 .navigate(R.id.action_dashBoardFragment_to_endFragment)
         }
     }
 
     fun GoWin() {
-        requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
+        requireActivity().runOnUiThread {
             NavHostFragment.findNavController(this)
                 .navigate(R.id.action_dashBoardFragment_to_winFragment)
         }

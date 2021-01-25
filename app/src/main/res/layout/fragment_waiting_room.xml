@@ -33,35 +33,48 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
+            <ScrollView
+                android:id="@+id/waitingScroll"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                app:layout_constraintBottom_toTopOf="@id/buttonStartGame"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/WaitPlayer">
 
-                <ScrollView
-                    android:id="@+id/waitingScroll"
+                <LinearLayout
+                    android:id="@+id/LayoutWaitroom"
                     android:layout_width="match_parent"
-                    android:layout_height="0px"
-                    app:layout_constraintTop_toBottomOf="@id/WaitPlayer"
-                    app:layout_constraintBottom_toTopOf="@id/buttonStartGame"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    android:layout_height="match_parent"
+                    android:layout_margin="60px"
+                    android:background="@drawable/background_border"
+                    android:orientation="vertical"
+                    android:padding="20px">
 
-                    <LinearLayout
-                        android:id="@+id/LayoutWaitroom"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_margin="60px"
-                        android:padding="20px"
-                        android:background="@drawable/background_border">
+                </LinearLayout>
 
-                    </LinearLayout>
+            </ScrollView>
 
-                </ScrollView>
-
+            <Button
+                android:id="@+id/leaveWaitingRoom"
+                android:layout_width="252dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#F44336"
+                android:text="QUITTER"
+                android:textColor="#000"
+                android:textSize="25dip"
+                app:cornerRadius="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/buttonStartGame"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/buttonStartGame"
                 android:layout_width="252dp"
                 android:layout_height="70dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="32dp"
                 android:backgroundTint="#FFE436"
                 android:text="Mise en orbite"
                 android:textColor="#000"
@@ -69,6 +82,7 @@
                 app:cornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintStart_toStartOf="parent" />
 
 

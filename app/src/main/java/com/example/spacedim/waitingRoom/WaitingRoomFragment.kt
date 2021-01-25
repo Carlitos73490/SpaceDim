@@ -106,14 +106,24 @@ class WaitingRoomFragment : Fragment() {
             viewModel.readyState()
         }
 
+        binding.leaveWaitingRoom.setOnClickListener {
+            LeaveWaitingRoom()
+        }
+
         return binding.root
-        //return inflater.inflate(R.layout.fragment_waiting_room, container, false)
     }
 
     fun GoDashBoard() {
-        requireActivity().runOnUiThread { // This code will always run on the UI thread, therefore is safe to modify UI elements.
+        requireActivity().runOnUiThread {
             NavHostFragment.findNavController(this)
                 .navigate(R.id.action_waitingRoomFragment_to_dashBoardFragment)
+        }
+    }
+
+    fun LeaveWaitingRoom() {
+        requireActivity().runOnUiThread {
+            NavHostFragment.findNavController(this)
+                .navigate(R.id.action_waitingRoomFragment_to_loginFragment)
         }
     }
 }
