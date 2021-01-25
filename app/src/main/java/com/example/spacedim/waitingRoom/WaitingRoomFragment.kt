@@ -68,10 +68,11 @@ class WaitingRoomFragment : Fragment() {
                     llayout.setOrientation(LinearLayout.HORIZONTAL);
 
                     // User avatar
-                    val layoutParams = LinearLayout.LayoutParams(100, 100)
-                    layoutParams.gravity = Gravity.CENTER_VERTICAL
+                    val imageParams = LinearLayout.LayoutParams(120, 120)
+                    imageParams.gravity = Gravity.CENTER_VERTICAL
                     val image = ImageView(this.context)
-                    image.setLayoutParams(layoutParams)
+                    image.setPadding(10,10,10,10)
+                    image.setLayoutParams(imageParams)
                     Picasso.get().load(elem.avatar).into(image)
 
                     // User name
@@ -79,6 +80,7 @@ class WaitingRoomFragment : Fragment() {
                     name.textSize = 30f;
                     name.text = elem.name.toUpperCase();
                     name.setTextColor(Color.parseColor("#FFE436"));
+                    name.setPadding(50,10,10,10)
 
 
                     if(elem.state == State.READY) {
